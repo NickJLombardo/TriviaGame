@@ -1,0 +1,27 @@
+body{
+	background-image: url(https://a.espncdn.com/i/teamlogos/mlb/500/phi.png);
+    background-size:cover;
+    text-align: center;
+    
+}
+.text-muted{
+	color: red;
+}
+.last-seconds, .header, h2, #results{
+  color: red;
+}
+.option{
+  margin: 15px;
+}
+#remaining-time{
+    color:red;
+    font-size: 30px;
+    padding-top:10px;
+    font-weight:600;
+   
+}
+#question{
+    font-size: 30px;
+    color:red;
+    font-weight:600;
+}
