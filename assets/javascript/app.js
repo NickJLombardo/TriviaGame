@@ -44,7 +44,6 @@ $(document).ready(function(){
     
   
     startGame: function(){
-      
       phillies.currentSet = 0;
       phillies.correct = 0;
       phillies.incorrect = 0;
@@ -70,7 +69,7 @@ $(document).ready(function(){
         phillies.timerId = setInterval(phillies.timerRunning, 1000);
       }
       var questionContent = Object.values(phillies.questions)[phillies.currentSet];
-      $('#question').text(questionContent);
+        $('#question').text(questionContent);
       var questionOptions = Object.values(phillies.options)[phillies.currentSet];
       
       $.each(questionOptions, function(index, key){
@@ -86,9 +85,9 @@ $(document).ready(function(){
       if($(this).text() === currentAnswer){
   
         $(this).addClass('btn-success').removeClass('btn-danger');
-        phillies.correct++;
+          phillies.correct++;
         clearInterval(phillies.timerId);
-        resultId = setTimeout(phillies.guessResult, 1000);
+          resultId = setTimeout(phillies.guessResult, 1000);
         $('#results').html('<h3>Correct Answer!</h3>');
       }
       
@@ -114,19 +113,19 @@ $(document).ready(function(){
     timerRunning : function(){
     
       if(phillies.timer > -1 && phillies.currentSet < Object.keys(phillies.questions).length){
-        $('#timer').text(phillies.timer);
+          $('#timer').text(phillies.timer);
         phillies.timer--;
       }
       else if(phillies.timer === -1){
-        phillies.unanswered++;
-        phillies.result = false;
+          phillies.unanswered++;
+          phillies.result = false;
         clearInterval(phillies.timerId);
         resultId = setTimeout(phillies.guessResult, 1000);
         $('#results').html('<h3>Out of time. The answer was '+ Object.values(phillies.answers)[phillies.currentSet] +'</h3>');
       }
       
       else if(phillies.currentSet === Object.keys(phillies.questions).length){
-        $('#results')
+          $('#results')
           .html('<h3>Thank you for playing</h3>'+
           '<p>Correct: '+ phillies.correct +'</p>'+
           '<p>Incorrect: '+ phillies.incorrect +'</p>'+
