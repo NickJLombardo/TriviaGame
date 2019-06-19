@@ -11,7 +11,7 @@ $(document).ready(function(){
     correct: 0,
     incorrect: 0,
     timer: 20,
-    timerOn: false,
+    timerOn: true,
     timerId : '',
     
     questions: {
@@ -66,7 +66,7 @@ $(document).ready(function(){
 
       $('#timer').text(phillies.timer);
       
-      if(!phillies.timerOn){
+      if(phillies.timerOn){
         phillies.timerId = setInterval(phillies.timerRunning, 1000);
       }
       var questionContent = Object.values(phillies.questions)[phillies.currentSet];
