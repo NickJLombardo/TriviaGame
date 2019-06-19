@@ -6,10 +6,10 @@ $(document).ready(function(){
   })
   
   var trivia = {
-    correct: 0,
-    incorrect: 0,
     unanswered: 0,
     currentSet: 0,
+    correct: 0,
+    incorrect: 0,
     timer: 20,
     timerOn: false,
     timerId : '',
@@ -23,15 +23,6 @@ $(document).ready(function(){
       q6: 'Who has the most stolen bases in Phillies history?',
       
     },
-    options: {
-      q1: ['Ryan Howard', 'Mike Schmidt', 'Jim Thome', 'Chase Utley'],
-      q2: ['Steve Carlton', 'Cole Hamels', 'Cliff Lee', 'Pete Rose'],
-      q3: ['Pat Burrell', 'Jimmy Rollins', 'Chase Utley', 'Mike Schmidt'],
-      q4: ['3', '1', '5', '2'],
-      q5: ['Charlie Manuel','Gene Mauch','Sparky Anderson','Pete Rose'],
-      q6: ['Billy Hamilton','Chase Utley','Pat Burrell','Jimmy Rollins'],
-      
-    },
     answers: {
       q1: 'Mike Schmidt',
       q2: 'Steve Carlton',
@@ -41,6 +32,16 @@ $(document).ready(function(){
       q6: 'Billy Hamilton',
   
     },
+    options: {
+      q1: ['Ryan Howard', 'Mike Schmidt', 'Jim Thome', 'Chase Utley'],
+      q2: ['Steve Carlton', 'Cole Hamels', 'Cliff Lee', 'Pete Rose'],
+      q3: ['Pat Burrell', 'Jimmy Rollins', 'Chase Utley', 'Mike Schmidt'],
+      q4: ['3', '1', '5', '2'],
+      q5: ['Charlie Manuel','Gene Mauch','Sparky Anderson','Pete Rose'],
+      q6: ['Billy Hamilton','Chase Utley','Pat Burrell','Jimmy Rollins'],
+      
+    },
+    
   
     startGame: function(){
       
@@ -77,7 +78,7 @@ $(document).ready(function(){
       })
       
     },
-    
+
     guessChecker : function() {
       var resultId;
       var currentAnswer = Object.values(trivia.answers)[trivia.currentSet];
