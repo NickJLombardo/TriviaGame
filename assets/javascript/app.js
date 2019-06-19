@@ -80,7 +80,7 @@ $(document).ready(function(){
     },
 
     guessChecker : function() {
-      var resultId;
+      var resultId
       var currentAnswer = Object.values(phillies.answers)[phillies.currentSet];
       
       if($(this).text() === currentAnswer){
@@ -98,7 +98,7 @@ $(document).ready(function(){
         phillies.incorrect++;
         clearInterval(phillies.timerId);
         resultId = setTimeout(phillies.guessResult, 1000);
-        $('#results').html('<h3>Better luck next time! '+ currentAnswer +'</h3>');
+        $('#results').html('<h3>'+ currentAnswer +'</h3>');
       }
       
     },
@@ -122,12 +122,12 @@ $(document).ready(function(){
         phillies.result = false;
         clearInterval(phillies.timerId);
         resultId = setTimeout(phillies.guessResult, 1000);
-        $('#results').html('<h3>Out of time! The answer was '+ Object.values(phillies.answers)[phillies.currentSet] +'</h3>');
+        $('#results').html('<h3>Out of time. The answer was '+ Object.values(phillies.answers)[phillies.currentSet] +'</h3>');
       }
       
-      else if(trivia.currentSet === Object.keys(phillies.questions).length){
+      else if(phillies.currentSet === Object.keys(phillies.questions).length){
         $('#results')
-          .html('<h3>Thank you for playing!</h3>'+
+          .html('<h3>Thank you for playing</h3>'+
           '<p>Correct: '+ phillies.correct +'</p>'+
           '<p>Incorrect: '+ phillies.incorrect +'</p>'+
           '<p>Unaswered: '+ phillies.unanswered +'</p>'+
