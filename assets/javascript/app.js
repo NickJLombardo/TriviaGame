@@ -1,11 +1,11 @@
 $(document).ready(function(){
     $("#remaining-time").hide();
-    $("#start").on('click', trivia.startGame);
-    $(document).on('click' , '.option', trivia.guessChecker);
+    $("#start").on('click', phillies.startGame);
+    $(document).on('click' , '.option', phillies.guessChecker);
     
   })
   
-  var trivia = {
+  var phillies = {
     unanswered: 0,
     currentSet: 0,
     correct: 0,
@@ -45,33 +45,33 @@ $(document).ready(function(){
   
     startGame: function(){
       
-      trivia.currentSet = 0;
-      trivia.correct = 0;
-      trivia.incorrect = 0;
-      trivia.unanswered = 0;
-      clearInterval(trivia.timerId);
+      phillies.currentSet = 0;
+      phillies.correct = 0;
+      phillies.incorrect = 0;
+      phillies.unanswered = 0;
+      clearInterval(phillies.timerId);
     
       $('#game').show();
       $('#results').html('');
-      $('#timer').text(trivia.timer);
+      $('#timer').text(phillies.timer);
       $('#start').hide();
       $('#remaining-time').show();
-      trivia.nextQuestion();
+      phillies.nextQuestion();
       
     },
   
     nextQuestion : function(){
     
-      trivia.timer = 10;
+      phillies.timer = 10;
 
-      $('#timer').text(trivia.timer);
+      $('#timer').text(phillies.timer);
       
-      if(!trivia.timerOn){
-        trivia.timerId = setInterval(trivia.timerRunning, 1000);
+      if(!phillies.timerOn){
+        phillies.timerId = setInterval(phillies.timerRunning, 1000);
       }
-      var questionContent = Object.values(trivia.questions)[trivia.currentSet];
+      var questionContent = Object.values(phillies.questions)[phillies.currentSet];
       $('#question').text(questionContent);
-      var questionOptions = Object.values(trivia.options)[trivia.currentSet];
+      var questionOptions = Object.values(phillies.options)[phillies.currentSet];
       
       $.each(questionOptions, function(index, key){
         $('#options').append($('<button class="option btn btn-danger btn-lg">'+key+'</button>'));
@@ -81,56 +81,56 @@ $(document).ready(function(){
 
     guessChecker : function() {
       var resultId;
-      var currentAnswer = Object.values(trivia.answers)[trivia.currentSet];
+      var currentAnswer = Object.values(phillies.answers)[phillies.currentSet];
       
       if($(this).text() === currentAnswer){
   
         $(this).addClass('btn-success').removeClass('btn-danger');
-        trivia.correct++;
-        clearInterval(trivia.timerId);
-        resultId = setTimeout(trivia.guessResult, 1000);
+        phillies.correct++;
+        clearInterval(phillies.timerId);
+        resultId = setTimeout(phillies.guessResult, 1000);
         $('#results').html('<h3>Correct Answer!</h3>');
       }
       
       else{
     
         $(this).addClass('btn-info').removeClass('btn-danger');
-        trivia.incorrect++;
-        clearInterval(trivia.timerId);
-        resultId = setTimeout(trivia.guessResult, 1000);
+        phillies.incorrect++;
+        clearInterval(phillies.timerId);
+        resultId = setTimeout(phillies.guessResult, 1000);
         $('#results').html('<h3>Better luck next time! '+ currentAnswer +'</h3>');
       }
       
     },
     guessResult : function(){
-      trivia.currentSet++;
+      phillies.currentSet++;
       
       $('.option').remove();
       $('#results h3').remove();
-      trivia.nextQuestion();
+      phillies.nextQuestion();
        
     },
 
     timerRunning : function(){
     
-      if(trivia.timer > -1 && trivia.currentSet < Object.keys(trivia.questions).length){
-        $('#timer').text(trivia.timer);
-        trivia.timer--;
+      if(phillies.timer > -1 && phillies.currentSet < Object.keys(phillies.questions).length){
+        $('#timer').text(phillies.timer);
+        phillies.timer--;
       }
-      else if(trivia.timer === -1){
-        trivia.unanswered++;
-        trivia.result = false;
-        clearInterval(trivia.timerId);
-        resultId = setTimeout(trivia.guessResult, 1000);
-        $('#results').html('<h3>Out of time! The answer was '+ Object.values(trivia.answers)[trivia.currentSet] +'</h3>');
+      else if(phillies.timer === -1){
+        phillies.unanswered++;
+        phillies.result = false;
+        clearInterval(phillies.timerId);
+        resultId = setTimeout(phillies.guessResult, 1000);
+        $('#results').html('<h3>Out of time! The answer was '+ Object.values(phillies.answers)[phillies.currentSet] +'</h3>');
       }
       
-      else if(trivia.currentSet === Object.keys(trivia.questions).length){
+      else if(trivia.currentSet === Object.keys(phillies.questions).length){
         $('#results')
           .html('<h3>Thank you for playing!</h3>'+
-          '<p>Correct: '+ trivia.correct +'</p>'+
-          '<p>Incorrect: '+ trivia.incorrect +'</p>'+
-          '<p>Unaswered: '+ trivia.unanswered +'</p>'+
+          '<p>Correct: '+ phillies.correct +'</p>'+
+          '<p>Incorrect: '+ phillies.incorrect +'</p>'+
+          '<p>Unaswered: '+ phillies.unanswered +'</p>'+
           '<p>Please play again!</p>');
         
        
