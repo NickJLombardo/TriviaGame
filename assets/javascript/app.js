@@ -83,7 +83,7 @@ $(document).ready(function(){
       var currentAnswer = Object.values(phillies.answers)[phillies.currentSet];
       
       if($(this).text() === currentAnswer){
-  
+        
         $(this).addClass('btn-success').removeClass('btn-danger');
           phillies.correct++;
         clearInterval(phillies.timerId);
